@@ -1,21 +1,38 @@
 'use client';
-import store from '@/redux/store';
+import store, { RootState } from '@/redux/store';
 import { Country } from '@/types/types';
-import { parseArea, renderMultipleStrings } from '@/utils/countries';
+import {
+    inSelectedCountries,
+    parseArea,
+    renderMultipleStrings,
+} from '@/utils/countries';
 import { addToSelectedCountry } from '@/redux/countrySlice';
+import { useSelector } from 'react-redux';
 
 type Props = {
     country: Country;
 };
 
 const CountryGridCard = ({ country }: Props) => {
+    const { selectedCountries } = useSelector((s: RootState) => s.countrySlice);
+
     return (
         <div
             key={country.name}
-            className="cursor-pointer rounded overflow-hidden shadow active:shadow-lg bg-slate-100"
+            className={`cursor-pointer rounded overflow-hidden shadow active:shadow-lg  ${
+                inSelectedCountries(country, selectedCountries)
+                    ? 'bg-blue-200'
+                    : 'bg-slate-100'
+            }`}
             onClick={() => store.dispatch(addToSelectedCountry(country))}
         >
-            <section className="p-2 bg-gradient-to-r from-slate-300 to-white">
+            <section
+                className={`p-2 ${
+                    inSelectedCountries(country, selectedCountries)
+                        ? 'bg-gradient-to-r from-blue-500 to-white text-white'
+                        : 'bg-gradient-to-r from-slate-300 to-white'
+                }`}
+            >
                 <h4 className="capitalize cursor-pointer text-lg font-bold">
                     {country.fullname ? country.fullname : country.name}
                 </h4>

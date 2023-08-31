@@ -12,7 +12,6 @@ const SelectedCountries = () => {
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
     const pathname = usePathname();
-    console.log(pathname);
 
     const removeAllHandler = () => dispatch(removeAllFromSelectedCountry());
 

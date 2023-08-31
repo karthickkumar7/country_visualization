@@ -1,6 +1,6 @@
 'use client';
 import { AppDispatch, RootState } from '@/redux/store';
-import { parseArea } from '@/utils/countries';
+import { inSelectedCountries, parseArea } from '@/utils/countries';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToSelectedCountry } from '@/redux/countrySlice';
 import { Country } from '@/types/types';
@@ -13,19 +13,6 @@ const CountryTable = () => {
 
     const selectCountry = (country: Country) => {
         dispatch(addToSelectedCountry(country));
-    };
-
-    const inSelectedCountries = (country: Country): boolean => {
-        if (selectedCountries) {
-            for (let i = 0; i < selectedCountries.length; i++) {
-                if (
-                    selectedCountries[i].name.toLowerCase() ===
-                    country.name.toLowerCase()
-                )
-                    return true;
-            }
-        }
-        return false;
     };
 
     return (
@@ -47,10 +34,10 @@ const CountryTable = () => {
                 {countries.map((country, i) => (
                     <tr
                         key={country.name}
-                        className={`w-full p-1 flex justify-between text-xs md:text-lg font-semibold cursor-pointer  hover:bg-blue-100 ${
-                            inSelectedCountries(country)
+                        className={`w-full px-1 py-3 md:p-1 flex justify-between text-xs md:text-lg font-semibold cursor-pointer ${
+                            inSelectedCountries(country, selectedCountries)
                                 ? 'bg-blue-200'
-                                : 'even:bg-slate-100'
+                                : 'hover:bg-blue-100 even:bg-slate-100'
                         }`}
                         onClick={() => selectCountry(country)}
                     >

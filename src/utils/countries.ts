@@ -1,3 +1,5 @@
+import { Country } from '@/types/types';
+
 export const renderMultipleStrings = (capital: string[] | string): string => {
     if (Array.isArray(capital)) {
         return capital.join(', ');
@@ -117,4 +119,20 @@ export const parseArea = (area: number): string => {
     }
 
     return String(area);
+};
+
+export const inSelectedCountries = (
+    country: Country,
+    selectedCountries: Country[] | null
+): boolean => {
+    if (selectedCountries) {
+        for (let i = 0; i < selectedCountries.length; i++) {
+            if (
+                selectedCountries[i].name.toLowerCase() ===
+                country.name.toLowerCase()
+            )
+                return true;
+        }
+    }
+    return false;
 };

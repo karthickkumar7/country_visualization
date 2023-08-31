@@ -17,9 +17,17 @@ export type CountrySliceInitialState = {
 
 export type FunctionSliceInitialState = {
     currentView: 'table' | 'grid';
+    isMobileDrawerOpen: boolean;
 };
 
 export type ChartTypes = 'bar' | 'tree' | 'pie';
+export type FieldTypes = 'population' | 'gdp_nominal' | 'gdp_ppp' | 'area';
+export type CountrySortFields =
+    | 'population'
+    | 'gdp_nominal'
+    | 'gdp_ppp'
+    | 'area'
+    | 'name';
 
 export type ChartListTypes = {
     title: string;
@@ -28,10 +36,21 @@ export type ChartListTypes = {
 
 export type VisualSliceInitialState = {
     currentChart: ChartTypes;
-    currentField: 'population' | 'gdp_nominal' | 'gdp_ppp' | 'area';
+    currentField: FieldTypes;
+    chartColor: string;
 };
 
 export type NavItem = {
     title: string;
     subMenu?: NavItem[];
+};
+
+export type SelectFields = {
+    title: string;
+    sub: FieldTypes;
+};
+
+export type BarChartLayout = {
+    title: string;
+    sub: 'h' | 'v';
 };

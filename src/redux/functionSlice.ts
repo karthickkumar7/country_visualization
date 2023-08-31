@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: FunctionSliceInitialState = {
     currentView: 'table',
+    isMobileDrawerOpen: false,
 };
 
 const functionSlice = createSlice({
@@ -16,9 +17,12 @@ const functionSlice = createSlice({
                 state.currentView = payload;
             }
         },
+        setMobileDrawer: (state) => {
+            state.isMobileDrawerOpen = !state.isMobileDrawerOpen;
+        },
     },
 });
 
-export const { setCurrentView } = functionSlice.actions;
+export const { setCurrentView, setMobileDrawer } = functionSlice.actions;
 
 export default functionSlice.reducer;

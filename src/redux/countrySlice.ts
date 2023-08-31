@@ -1,5 +1,9 @@
 import { countries } from '@/data/countries';
-import { Country, CountrySliceInitialState } from '@/types/types';
+import {
+    Country,
+    CountrySliceInitialState,
+    CountrySortFields,
+} from '@/types/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: CountrySliceInitialState = {
@@ -51,6 +55,13 @@ const countrySlice = createSlice({
         removeAllFromSelectedCountry: (state) => {
             state.selectedCountries = null;
         },
+
+        sortBy: (state, { payload }: { payload: CountrySortFields }) => {
+            if (payload !== 'name')
+                state.countries = state.countries.sort(
+                    (x, y) => y[payload] - x[payload]
+                );
+        },
     },
 });
 
@@ -58,6 +69,7 @@ export const {
     addToSelectedCountry,
     removeFromSelectedCountry,
     removeAllFromSelectedCountry,
+    sortBy,
 } = countrySlice.actions;
 
 export default countrySlice.reducer;

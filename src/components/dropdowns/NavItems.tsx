@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
 
 const NavItems = () => {
     return (
-        <ul className="flex items-center space-x-4 text-lg font-semibold">
+        <ul className="flex items-center space-x-2 md:space-x-4 text-base md:text-lg font-semibold">
             {navItems.map((item) => (
                 <Item key={item.title} item={item} />
             ))}

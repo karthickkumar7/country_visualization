@@ -1,47 +1,25 @@
 'use client';
-import { RootState } from '@/redux/store';
+
+import dynamic from 'next/dynamic';
+import BarChart from './BarChart';
 import { useSelector } from 'react-redux';
-import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    Legend,
-    Tooltip,
-    XAxis,
-    YAxis,
-} from 'recharts';
+import { RootState } from '@/redux/store';
 
 const Chart = () => {
+    const TreeMap = dynamic(() => import('./TreeMap'), { ssr: false });
+    const PieChart = dynamic(() => import('./PieChart'), { ssr: false });
+    const { currentChart } = useSelector((s: RootState) => s.visualSlice);
     const { selectedCountries } = useSelector((s: RootState) => s.countrySlice);
-    const { currentField } = useSelector((s: RootState) => s.visualSlice);
 
-    const data = selectedCountries?.map((c) => {
-        return {
-            name: c.name,
-            // [currentField]: c[currentField],
-            population: c.population,
-            area: c.area,
-            gdp_nominal: c.gdp_nominal,
-            gdp_ppp: c.gdp_ppp,
-        };
-    });
+    const chartTypeRender = {
+        bar: <BarChart />,
+        tree: <TreeMap />,
+        pie: <PieChart />,
+    };
 
     return (
-        <div className="">
-            <BarChart
-                width={730}
-                height={250}
-                data={data}
-                layout="horizontal"
-                className="ml-2"
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <YAxis type="number" />
-                <XAxis dataKey="name" type="category" />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="population" fill="#008080" />
-            </BarChart>
+        <div className="w-full">
+            {selectedCountries && chartTypeRender[currentChart]}
         </div>
     );
 };

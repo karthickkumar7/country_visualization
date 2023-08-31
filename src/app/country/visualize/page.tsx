@@ -1,61 +1,34 @@
 'use client';
+import Chart from '@/components/chart/Chart';
+import ChartColor from '@/components/ChartColor';
+import ChartTypeListSideBar from '@/components/ChartTypeListSideBar';
+import ChartTypeMobile from '@/components/ChartTypeMobile';
 import SelectedCountries from '@/components/SelectedCountries';
-import SelectFields from '@/components/selectFields/SelectFields';
-import store from '@/redux/store';
-import { setCurrentChartType } from '@/redux/visualSlice';
-import { ChartListTypes } from '@/types/types';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import SelectFields from '@/components/SelectFields';
+import VisualizeAddCountries from '@/components/VisualizeAddCountries';
+import { RootState } from '@/redux/store';
+import { useSelector } from 'react-redux';
 
-const chartTypes: ChartListTypes[] = [
-    {
-        title: 'Bar chart',
-        sub: 'bar',
-    },
-    {
-        title: 'Pie chart',
-        sub: 'pie',
-    },
-    {
-        title: 'Tree map',
-        sub: 'tree',
-    },
-];
-
-const page = () => {
-    const Chart = dynamic(() => import('@/components/chart/Chart'), {
-        ssr: false,
-    });
+const Visualizer = () => {
+    const { isMobileDrawerOpen } = useSelector(
+        (s: RootState) => s.functionSlice
+    );
     return (
-        <div className="max-w-[1200px] mx-auto flex">
-            <section className="w-[250px]">
-                <div>
-                    <ul className="p-1 space-y-4 text-lg font-semibold ">
-                        {chartTypes.map((chart) => (
-                            <li
-                                key={chart.title}
-                                className="p-2 cursor-pointer rounded hover:bg-blue-100 active:bg-blue-200"
-                                onClick={() =>
-                                    store.dispatch(
-                                        setCurrentChartType(chart.sub)
-                                    )
-                                }
-                            >
-                                {chart.title}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+        <div className="md:max-w-[1200px] mx-auto md:flex">
+            <section className="w-[250px] p-2 hidden md:block">
+                <ChartTypeListSideBar />
+                <VisualizeAddCountries />
             </section>
-            <section className="w-[950px]">
+            {isMobileDrawerOpen && <ChartTypeMobile />}
+
+            <section className="w-full md:w-[950px] space-y-5 p-2">
                 <SelectedCountries />
                 <SelectFields />
-                {/* <Suspense fallback={<p>loading...</p>}>
-                    <Chart />
-                </Suspense> */}
+                <ChartColor />
+                <Chart />
             </section>
         </div>
     );
 };
 
-export default page;
+export default Visualizer;
