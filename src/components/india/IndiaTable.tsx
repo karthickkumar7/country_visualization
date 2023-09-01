@@ -15,7 +15,7 @@ const IndiaTable = () => {
     };
 
     return (
-        <table className="w-full">
+        <table className="w-full mt-4">
             <thead className="w-full">
                 <tr className="w-full px-1 flex justify-between capitalize text-sm md:text-xl rounded-t duration-300 bg-blue-600 text-white">
                     <th className="w-[5%] h-full py-4 px-1 hidden md:inline-flex">

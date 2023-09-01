@@ -69,7 +69,7 @@ const SearchInput = ({
             </div>
 
             {searchedData.length ? (
-                <div className="w-full p-2 mt-4 shadow border absolute z-10 bg-white">
+                <div className="w-full p-2 mt-4 shadow border absolute z-10 max-h-[500px] md:max-h-[600px] overflow-y-auto bg-white">
                     <ul className="divide-y">
                         {searchedData.map((c) => (
                             <li

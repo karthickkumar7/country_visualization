@@ -1,10 +1,12 @@
 'use client';
 import React from 'react';
-import VisualizeAddCountries from './search/SearchInput';
 import { useSelector } from 'react-redux';
 import store, { RootState } from '@/redux/store';
 import { ChartListTypes } from '@/types/types';
 import { setCurrentChartType } from '@/redux/visualSlice';
+import { usePathname } from 'next/navigation';
+import SearchCountries from './search/SearchCountries';
+import SearchIndia from './search/SearchIndia';
 
 const chartTypes: ChartListTypes[] = [
     {
@@ -24,6 +26,21 @@ const chartTypes: ChartListTypes[] = [
 const ChartTypeMobile = () => {
     const { currentChart } = useSelector((s: RootState) => s.visualSlice);
 
+    const pathname = usePathname();
+
+    const renderSearchInput = () => {
+        console.log(pathname);
+        switch (pathname) {
+            case '/country/visualize':
+                return <SearchCountries />;
+
+            case '/india/visualize':
+                return <SearchIndia />;
+            default:
+                return null;
+        }
+    };
+
     return (
         <section className="w-[250px] p-2 block md:hidden">
             <ul>
@@ -42,9 +59,7 @@ const ChartTypeMobile = () => {
                         {chart.title}
                     </li>
                 ))}
-                <li className="mt-2">
-                    <VisualizeAddCountries />
-                </li>
+                <li className="mt-2">{renderSearchInput()}</li>
             </ul>
         </section>
     );
