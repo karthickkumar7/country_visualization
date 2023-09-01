@@ -2,7 +2,7 @@
 import store, { RootState } from '@/redux/store';
 import { Country } from '@/types/types';
 import {
-    inSelectedCountries,
+    inSelected,
     parseArea,
     renderMultipleStrings,
 } from '@/utils/countries';
@@ -20,7 +20,7 @@ const CountryGridCard = ({ country }: Props) => {
         <div
             key={country.name}
             className={`cursor-pointer rounded overflow-hidden shadow active:shadow-lg  ${
-                inSelectedCountries(country, selectedCountries)
+                inSelected(country, selectedCountries)
                     ? 'bg-blue-200'
                     : 'bg-slate-100'
             }`}
@@ -28,7 +28,7 @@ const CountryGridCard = ({ country }: Props) => {
         >
             <section
                 className={`p-2 ${
-                    inSelectedCountries(country, selectedCountries)
+                    inSelected(country, selectedCountries)
                         ? 'bg-gradient-to-r from-blue-500 to-white text-white'
                         : 'bg-gradient-to-r from-slate-300 to-white'
                 }`}

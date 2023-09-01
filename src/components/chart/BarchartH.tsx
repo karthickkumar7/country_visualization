@@ -1,5 +1,6 @@
 'use client';
 import { RootState } from '@/redux/store';
+import { MainCategoriesString } from '@/types/types';
 import { useSelector } from 'react-redux';
 import {
     Bar,
@@ -12,35 +13,55 @@ import {
     YAxis,
 } from 'recharts';
 
-const BarchartH = () => {
+type Props = {
+    mainCategory: MainCategoriesString;
+};
+
+const BarchartH = ({ mainCategory }: Props) => {
     const { selectedCountries } = useSelector((s: RootState) => s.countrySlice);
-    const { currentField, chartColor } = useSelector(
+    const { selectedStates } = useSelector((s: RootState) => s.indiaSlice);
+    const { currentCountryField, currentStateField, chartColor } = useSelector(
         (s: RootState) => s.visualSlice
     );
 
-    const data = selectedCountries?.map((c) => {
-        return {
-            name: c.name,
-            [currentField]: c[currentField],
-        };
-    });
+    const setData = () => {
+        switch (mainCategory) {
+            case 'country':
+                return selectedCountries?.map((c) => {
+                    return {
+                        name: c.name,
+                        [currentCountryField]: c[currentCountryField],
+                    };
+                });
+            case 'india':
+                return selectedStates?.map((c) => {
+                    return {
+                        name: c.name,
+                        [currentStateField]: c[currentStateField],
+                    };
+                });
+        }
+    };
+
+    const getDataKey = () => {
+        switch (mainCategory) {
+            case 'country':
+                return currentCountryField;
+            case 'india':
+                return currentStateField;
+        }
+    };
 
     return (
         <div className="w-full overflow-x-auto">
             <ResponsiveContainer width="95%" height={250}>
-                <BarChart
-                    // width={730}
-                    // height={250}
-                    data={data}
-                    layout="horizontal"
-                    className="ml-2"
-                >
+                <BarChart data={setData()} layout="horizontal" className="ml-2">
                     <CartesianGrid strokeDasharray="3 3" />
                     <YAxis type="number" />
                     <XAxis dataKey="name" type="category" />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey={currentField} fill={chartColor} />
+                    <Bar dataKey={getDataKey()} fill={chartColor} />
                 </BarChart>
             </ResponsiveContainer>
         </div>

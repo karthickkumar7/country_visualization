@@ -1,28 +1,55 @@
 'use client';
 
 import { RootState } from '@/redux/store';
+import { MainCategoriesString } from '@/types/types';
 import { useSelector } from 'react-redux';
 import { Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
-const PieChartComp = () => {
+type Props = {
+    mainCategory: MainCategoriesString;
+};
+
+const PieChartComp = ({ mainCategory }: Props) => {
     const { selectedCountries } = useSelector((s: RootState) => s.countrySlice);
-    const { currentField, chartColor } = useSelector(
+    const { selectedStates } = useSelector((s: RootState) => s.indiaSlice);
+    const { currentCountryField, currentStateField, chartColor } = useSelector(
         (s: RootState) => s.visualSlice
     );
 
-    const data = selectedCountries?.map((c) => {
-        return {
-            name: c.name,
-            [currentField]: c[currentField],
-        };
-    });
+    const setData = () => {
+        switch (mainCategory) {
+            case 'country':
+                return selectedCountries?.map((c) => {
+                    return {
+                        name: c.name,
+                        [currentCountryField]: c[currentCountryField],
+                    };
+                });
+            case 'india':
+                return selectedStates?.map((c) => {
+                    return {
+                        name: c.name,
+                        [currentStateField]: c[currentStateField],
+                    };
+                });
+        }
+    };
+
+    const getDataKey = () => {
+        switch (mainCategory) {
+            case 'country':
+                return currentCountryField;
+            case 'india':
+                return currentStateField;
+        }
+    };
     return (
         <div className="w-full">
-            <ResponsiveContainer width="95%" height="400px" aspect={1}>
-                <PieChart>
+            <ResponsiveContainer width="90%" height="300px" aspect={1.2}>
+                <PieChart className="">
                     <Pie
-                        data={data}
-                        dataKey={currentField}
+                        data={setData()}
+                        dataKey={getDataKey()}
                         nameKey="name"
                         name="name"
                         cx="50%"

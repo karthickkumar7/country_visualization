@@ -1,9 +1,15 @@
-import { ChartTypes, FieldTypes, VisualSliceInitialState } from '@/types/types';
+import {
+    ChartTypes,
+    CountryFieldTypes,
+    StateFieldTypes,
+    VisualSliceInitialState,
+} from '@/types/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: VisualSliceInitialState = {
     currentChart: 'bar',
-    currentField: 'gdp_nominal',
+    currentCountryField: 'gdp_nominal',
+    currentStateField: 'population',
     chartColor: '#008080',
 };
 
@@ -19,8 +25,17 @@ const visualSlice = createSlice({
             }
         },
 
-        setCurrentField: (state, { payload }: { payload: FieldTypes }) => {
-            state.currentField = payload;
+        setCurrentCountryField: (
+            state,
+            { payload }: { payload: CountryFieldTypes }
+        ) => {
+            state.currentCountryField = payload;
+        },
+        setCurrentStateField: (
+            state,
+            { payload }: { payload: StateFieldTypes }
+        ) => {
+            state.currentStateField = payload;
         },
 
         setChartColor: (state, { payload }: { payload: string }) => {
@@ -29,7 +44,11 @@ const visualSlice = createSlice({
     },
 });
 
-export const { setCurrentChartType, setCurrentField, setChartColor } =
-    visualSlice.actions;
+export const {
+    setCurrentChartType,
+    setCurrentCountryField,
+    setCurrentStateField,
+    setChartColor,
+} = visualSlice.actions;
 
 export default visualSlice.reducer;

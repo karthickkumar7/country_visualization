@@ -10,9 +10,24 @@ export type Country = {
     off_lang: string[];
 };
 
+export type India = {
+    name: string;
+    fullname?: string;
+    capital: string;
+    population: number;
+    gdp: number;
+    gdp_pc: number;
+    area: number;
+    off_lang: string[];
+};
+
 export type CountrySliceInitialState = {
     countries: Country[];
     selectedCountries: Country[] | null;
+};
+export type IndiaSliceInitialState = {
+    india: India[];
+    selectedStates: India[] | null;
 };
 
 export type FunctionSliceInitialState = {
@@ -21,7 +36,12 @@ export type FunctionSliceInitialState = {
 };
 
 export type ChartTypes = 'bar' | 'tree' | 'pie';
-export type FieldTypes = 'population' | 'gdp_nominal' | 'gdp_ppp' | 'area';
+export type CountryFieldTypes =
+    | 'population'
+    | 'gdp_nominal'
+    | 'gdp_ppp'
+    | 'area';
+export type StateFieldTypes = 'population' | 'gdp' | 'gdp_pc' | 'area';
 export type CountrySortFields =
     | 'population'
     | 'gdp_nominal'
@@ -36,7 +56,8 @@ export type ChartListTypes = {
 
 export type VisualSliceInitialState = {
     currentChart: ChartTypes;
-    currentField: FieldTypes;
+    currentCountryField: CountryFieldTypes;
+    currentStateField: StateFieldTypes;
     chartColor: string;
 };
 
@@ -45,12 +66,19 @@ export type NavItem = {
     subMenu?: NavItem[];
 };
 
-export type SelectFields = {
+export type SelectFieldsCountries = {
     title: string;
-    sub: FieldTypes;
+    sub: CountryFieldTypes;
+};
+export type SelectFieldsStates = {
+    title: string;
+    sub: StateFieldTypes;
 };
 
 export type BarChartLayout = {
     title: string;
     sub: 'h' | 'v';
 };
+
+export type MainCategories = Country | India;
+export type MainCategoriesString = 'country' | 'india';

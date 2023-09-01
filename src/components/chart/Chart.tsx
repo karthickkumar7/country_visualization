@@ -4,24 +4,24 @@ import dynamic from 'next/dynamic';
 import BarChart from './BarChart';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
+import { MainCategoriesString } from '@/types/types';
 
-const Chart = () => {
+type Props = {
+    mainCategory: MainCategoriesString;
+};
+
+const Chart = ({ mainCategory }: Props) => {
     const TreeMap = dynamic(() => import('./TreeMap'), { ssr: false });
     const PieChart = dynamic(() => import('./PieChart'), { ssr: false });
     const { currentChart } = useSelector((s: RootState) => s.visualSlice);
-    const { selectedCountries } = useSelector((s: RootState) => s.countrySlice);
 
     const chartTypeRender = {
-        bar: <BarChart />,
-        tree: <TreeMap />,
-        pie: <PieChart />,
+        bar: <BarChart mainCategory={mainCategory} />,
+        tree: <TreeMap mainCategory={mainCategory} />,
+        pie: <PieChart mainCategory={mainCategory} />,
     };
 
-    return (
-        <div className="w-full">
-            {selectedCountries && chartTypeRender[currentChart]}
-        </div>
-    );
+    return <div className="w-full">{chartTypeRender[currentChart]}</div>;
 };
 
 export default Chart;

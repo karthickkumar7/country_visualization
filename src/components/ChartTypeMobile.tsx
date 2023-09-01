@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import VisualizeAddCountries from './VisualizeAddCountries';
+import VisualizeAddCountries from './search/SearchInput';
 import { useSelector } from 'react-redux';
 import store, { RootState } from '@/redux/store';
 import { ChartListTypes } from '@/types/types';

@@ -1,5 +1,6 @@
 'use client';
 import { RootState } from '@/redux/store';
+import { MainCategoriesString } from '@/types/types';
 import { useSelector } from 'react-redux';
 import {
     Bar,
@@ -11,25 +12,51 @@ import {
     YAxis,
 } from 'recharts';
 
-const BarchartV = () => {
+type Props = {
+    mainCategory: MainCategoriesString;
+};
+
+const BarchartV = ({ mainCategory }: Props) => {
     const { selectedCountries } = useSelector((s: RootState) => s.countrySlice);
-    const { currentField, chartColor } = useSelector(
+    const { selectedStates } = useSelector((s: RootState) => s.indiaSlice);
+    const { currentCountryField, currentStateField, chartColor } = useSelector(
         (s: RootState) => s.visualSlice
     );
 
-    const data = selectedCountries?.map((c) => {
-        return {
-            name: c.name,
-            [currentField]: c[currentField],
-        };
-    });
+    const setData = () => {
+        switch (mainCategory) {
+            case 'country':
+                return selectedCountries?.map((c) => {
+                    return {
+                        name: c.name,
+                        [currentCountryField]: c[currentCountryField],
+                    };
+                });
+            case 'india':
+                return selectedStates?.map((c) => {
+                    return {
+                        name: c.name,
+                        [currentStateField]: c[currentStateField],
+                    };
+                });
+        }
+    };
+
+    const getDataKey = () => {
+        switch (mainCategory) {
+            case 'country':
+                return currentCountryField;
+            case 'india':
+                return currentStateField;
+        }
+    };
 
     return (
         <div className="overflow-x-auto">
             <BarChart
                 width={730}
                 height={250}
-                data={data}
+                data={setData()}
                 layout="vertical"
                 className="ml-2"
             >
@@ -38,7 +65,7 @@ const BarchartV = () => {
                 <YAxis dataKey="name" type="category" />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey={currentField} fill={chartColor} />
+                <Bar dataKey={getDataKey()} fill={chartColor} />
             </BarChart>
         </div>
     );

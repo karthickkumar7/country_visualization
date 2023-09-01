@@ -1,5 +1,5 @@
 'use client';
-import { BarChartLayout } from '@/types/types';
+import { BarChartLayout, MainCategoriesString } from '@/types/types';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 
@@ -14,7 +14,11 @@ const layouts: BarChartLayout[] = [
     },
 ];
 
-const BarChart = () => {
+type Props = {
+    mainCategory: MainCategoriesString;
+};
+
+const BarChart = ({ mainCategory }: Props) => {
     const [layout, setLayout] = useState<'h' | 'v'>('h');
     const BarchartH = dynamic(() => import('@/components/chart/BarchartH'), {
         ssr: false,
@@ -39,8 +43,8 @@ const BarChart = () => {
                     </div>
                 ))}
             </div>
-            {layout === 'h' && <BarchartH />}
-            {layout === 'v' && <BarchartV />}
+            {layout === 'h' && <BarchartH mainCategory={mainCategory} />}
+            {layout === 'v' && <BarchartV mainCategory={mainCategory} />}
         </div>
     );
 };

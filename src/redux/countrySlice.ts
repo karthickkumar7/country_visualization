@@ -29,7 +29,10 @@ const countrySlice = createSlice({
                         (c) => c.name !== payload.name
                     );
 
-                    if (state.countries && !state.selectedCountries.length)
+                    if (
+                        state.selectedCountries &&
+                        !state.selectedCountries.length
+                    )
                         state.selectedCountries = null;
                 }
             } else {

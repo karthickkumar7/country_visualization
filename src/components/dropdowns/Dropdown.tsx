@@ -44,11 +44,11 @@ const Dropdown = ({ item, showDropdown }: Props) => {
                 {item.title}
             </p>
             {showDropdown && (
-                <ul className="p-2 bg-white rounded shadow-lg absolute left-0">
+                <ul className="p-2 bg-blue-100 rounded shadow-lg absolute top-[25px] -left-[20px]">
                     {item.subMenu?.map((sub) => (
                         <li
                             key={sub.title}
-                            className="px-3 py-1 cursor-pointer hover:bg-slate-100 active:bg-slate-200"
+                            className="px-3 py-1 cursor-pointer text-blue-700 hover:bg-blue-50 active:bg-blue-200"
                             onClick={() =>
                                 dropdownActionHandler(item.title, sub.title)
                             }
