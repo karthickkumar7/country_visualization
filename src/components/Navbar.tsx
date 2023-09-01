@@ -16,14 +16,19 @@ const Navbar = () => {
                         <div className="text-2xl font-bold uppercase">logo</div>
                     </li>
                     <li
-                        className="flex items-center text-lg font-semibold space-x-4"
+                        className="px-2 py-1 items-center text-lg font-semibold space-x-4 flex rounded md:hidden hover:bg-slate-200"
                         onClick={() => store.dispatch(setMobileDrawer())}
                     >
-                        <p>expand</p>
                         {isMobileDrawerOpen ? (
-                            <GoChevronUp className="text-xl" />
+                            <>
+                                <p>collapse</p>
+                                <GoChevronUp className="text-xl" />
+                            </>
                         ) : (
-                            <GoChevronDown className="text-xl" />
+                            <>
+                                <p>expand</p>
+                                <GoChevronDown className="text-xl" />
+                            </>
                         )}
                     </li>
                 </ul>

@@ -24,7 +24,7 @@ const SelectedCountries = () => {
                     ))}
                 </>
             ) : (
-                <h4 className="px-4 uppercase text-lg font-semibold">
+                <h4 className="px-4 uppercase text-lg font-semibold text-blue-700">
                     no country selected
                 </h4>
             )}
