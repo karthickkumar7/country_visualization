@@ -4,7 +4,6 @@ import { Country } from '@/types/types';
 import { FormEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { addToSelectedCountry } from '@/redux/countrySlice';
-import { GoSearch } from 'react-icons/go';
 
 const VisualizeAddCountries = () => {
     const [search, setSearch] = useState('');
@@ -17,8 +16,11 @@ const VisualizeAddCountries = () => {
             setSearchedCountries(
                 countries.filter(
                     (c) =>
-                        c.name.includes(search) ||
-                        (c.fullname && c.fullname.includes(search))
+                        c.name.toLowerCase().includes(search.toLowerCase()) ||
+                        (c.fullname &&
+                            c.fullname
+                                .toLowerCase()
+                                .includes(search.toLowerCase()))
                 )
             );
         } else {
