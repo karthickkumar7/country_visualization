@@ -1,13 +1,18 @@
 'use client';
-import { NavItem } from '@/types/types';
+import {
+    CountryNavItem,
+    MainCategoriesString,
+    StateNavItem,
+} from '@/types/types';
 import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 
 type Props = {
-    item: NavItem;
+    item: StateNavItem | CountryNavItem;
+    mainCategory: MainCategoriesString;
 };
 
-const Item = ({ item }: Props) => {
+const Item = ({ item, mainCategory }: Props) => {
     const [showDropdown, setShowDropdown] = useState(false);
 
     return (
@@ -22,6 +27,7 @@ const Item = ({ item }: Props) => {
                     item={item}
                     showDropdown={showDropdown}
                     setShowDropdown={setShowDropdown}
+                    mainCategory={mainCategory}
                 />
             ) : (
                 <p className="px-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200">

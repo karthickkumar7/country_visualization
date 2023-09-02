@@ -1,39 +1,76 @@
 import store from '@/redux/store';
-import { NavItem } from '@/types/types';
+import {
+    MainCategoriesString,
+    StateNavItem,
+    CountryNavItem,
+} from '@/types/types';
 import { Dispatch, SetStateAction } from 'react';
 import { setCurrentView } from '@/redux/functionSlice';
-import { sortBy } from '@/redux/countrySlice';
+import { countrySortBy } from '@/redux/countrySlice';
+import { StateSortBy } from '@/redux/indiaSlice';
 
 type Props = {
-    item: NavItem;
+    item: StateNavItem | CountryNavItem;
     showDropdown: boolean;
     setShowDropdown: Dispatch<SetStateAction<boolean>>;
+    mainCategory: MainCategoriesString;
 };
 
-const Dropdown = ({ item, showDropdown }: Props) => {
+const sortCountry = (subTitle: string) => {
+    switch (subTitle) {
+        case 'Name':
+            store.dispatch(countrySortBy('name'));
+            return;
+        case 'Population':
+            store.dispatch(countrySortBy('population'));
+            return;
+        case 'Area':
+            store.dispatch(countrySortBy('area'));
+            return;
+        case 'Gdp (nom)':
+            store.dispatch(countrySortBy('gdp_nominal'));
+            return;
+        case 'Gdp (ppp)':
+            store.dispatch(countrySortBy('gdp_ppp'));
+            return;
+        default:
+            return;
+    }
+};
+
+const sortState = (subTitle: string) => {
+    switch (subTitle) {
+        case 'Name':
+            store.dispatch(StateSortBy('name'));
+            return;
+        case 'Population':
+            store.dispatch(StateSortBy('population'));
+            return;
+        case 'Area':
+            store.dispatch(StateSortBy('area'));
+            return;
+        case 'Gdp':
+            store.dispatch(StateSortBy('gdp'));
+            return;
+        case 'Gdp per capita':
+            store.dispatch(StateSortBy('gdp_pc'));
+            return;
+        default:
+            return;
+    }
+};
+
+const Dropdown = ({ item, showDropdown, mainCategory }: Props) => {
     const dropdownActionHandler = (itemtitle: string, subTitle: string) => {
         if (itemtitle === 'view') {
             if (subTitle === 'table' || subTitle === 'grid')
                 store.dispatch(setCurrentView(subTitle));
         } else if (itemtitle === 'sort') {
-            switch (subTitle) {
-                case 'Name':
-                    store.dispatch(sortBy('name'));
-                    return;
-                case 'Population':
-                    store.dispatch(sortBy('population'));
-                    return;
-                case 'Area':
-                    store.dispatch(sortBy('area'));
-                    return;
-                case 'Gdp (nom)':
-                    store.dispatch(sortBy('gdp_nominal'));
-                    return;
-                case 'Gdp (ppp)':
-                    store.dispatch(sortBy('gdp_ppp'));
-                    return;
-                default:
-                    return;
+            if (mainCategory === 'country') {
+                sortCountry(subTitle);
+            }
+            if (mainCategory === 'india') {
+                sortState(subTitle);
             }
         }
     };

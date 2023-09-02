@@ -29,7 +29,6 @@ const ChartTypeMobile = () => {
     const pathname = usePathname();
 
     const renderSearchInput = () => {
-        console.log(pathname);
         switch (pathname) {
             case '/country/visualize':
                 return <SearchCountries />;

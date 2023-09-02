@@ -46,19 +46,19 @@ const IndiaTable = () => {
                         <td className="w-[5%] hidden md:inline-flex">
                             {i + 1}
                         </td>
-                        <td className="w-[20%] px-2 capitalize">
+                        <td className="w-[20%] pl-2 capitalize">
                             {state.fullname}
                         </td>
-                        <td className="w-[5%] px-2 md:pl-12 capitalize">
+                        <td className="w-[5%] pl-2 md:pl-12 capitalize">
                             {state.name}
                         </td>
-                        <td className="w-[15%] md:pl-28 capitalize">
+                        <td className="w-[15%] pl-8 md:pl-28 capitalize">
                             {parseArea(state.gdp)}
                         </td>
-                        <td className="w-[20%] md:pl-24 capitalize">
+                        <td className="w-[20%] pl-8 md:pl-24 capitalize">
                             {parseArea(state.gdp_pc)}
                         </td>
-                        <td className="w-[20%] px-2 md:px-24">
+                        <td className="w-[20%] pl-4 md:px-24">
                             {parseArea(state.area)}
                         </td>
                         <td className="w-[20%] px-4 md:px-12">

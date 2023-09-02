@@ -1,12 +1,21 @@
 import HeaderChoice from './HeaderChoice';
 import NavItems from './dropdowns/NavItems';
-import SearchCountries from './search/SearchCountries';
+import {
+    CountryNavItem,
+    MainCategoriesString,
+    StateNavItem,
+} from '@/types/types';
 
-const Header = () => {
+type Props = {
+    mainCategory: MainCategoriesString;
+    navItems: StateNavItem[] | CountryNavItem[];
+};
+
+const Header = ({ mainCategory, navItems }: Props) => {
     return (
         <header className="w-full px-2 md:px-0 h-[60px] flex items-center justify-between">
             <HeaderChoice />
-            <NavItems />
+            <NavItems mainCategory={mainCategory} navItems={navItems} />
         </header>
     );
 };

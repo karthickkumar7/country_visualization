@@ -1,3 +1,10 @@
+export type DataCategory = {
+    id: number;
+    title: string;
+    image: string;
+    url: string;
+};
+
 export type Country = {
     name: string;
     fullname?: string;
@@ -36,18 +43,21 @@ export type FunctionSliceInitialState = {
 };
 
 export type ChartTypes = 'bar' | 'tree' | 'pie';
+
 export type CountryFieldTypes =
     | 'population'
     | 'gdp_nominal'
     | 'gdp_ppp'
     | 'area';
 export type StateFieldTypes = 'population' | 'gdp' | 'gdp_pc' | 'area';
+
 export type CountrySortFields =
     | 'population'
     | 'gdp_nominal'
     | 'gdp_ppp'
     | 'area'
     | 'name';
+export type StateSortFields = 'population' | 'gdp' | 'gdp_pc' | 'area' | 'name';
 
 export type ChartListTypes = {
     title: string;
@@ -61,9 +71,13 @@ export type VisualSliceInitialState = {
     chartColor: string;
 };
 
-export type NavItem = {
+export type CountryNavItem = {
     title: string;
-    subMenu?: NavItem[];
+    subMenu?: CountryNavItem[];
+};
+export type StateNavItem = {
+    title: string;
+    subMenu?: StateNavItem[];
 };
 
 export type SelectFieldsCountries = {

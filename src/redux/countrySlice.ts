@@ -59,7 +59,7 @@ const countrySlice = createSlice({
             state.selectedCountries = null;
         },
 
-        sortBy: (state, { payload }: { payload: CountrySortFields }) => {
+        countrySortBy: (state, { payload }: { payload: CountrySortFields }) => {
             if (payload !== 'name')
                 state.countries = state.countries.sort(
                     (x, y) => y[payload] - x[payload]
@@ -72,7 +72,7 @@ export const {
     addToSelectedCountry,
     removeFromSelectedCountry,
     removeAllFromSelectedCountry,
-    sortBy,
+    countrySortBy,
 } = countrySlice.actions;
 
 export default countrySlice.reducer;

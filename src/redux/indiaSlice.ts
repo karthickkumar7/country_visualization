@@ -1,5 +1,5 @@
 import { india } from '@/data/india';
-import { India, IndiaSliceInitialState } from '@/types/types';
+import { India, IndiaSliceInitialState, StateSortFields } from '@/types/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: IndiaSliceInitialState = {
@@ -49,6 +49,13 @@ const indiaSlice = createSlice({
         removeAllFromSelectedState: (state) => {
             state.selectedStates = null;
         },
+
+        StateSortBy: (state, { payload }: { payload: StateSortFields }) => {
+            if (payload !== 'name')
+                state.india = state.india.sort(
+                    (x, y) => y[payload] - x[payload]
+                );
+        },
     },
 });
 
@@ -56,6 +63,7 @@ export const {
     addToSelectedStates,
     removeAllFromSelectedState,
     removeFromSelectedState,
+    StateSortBy,
 } = indiaSlice.actions;
 
 export default indiaSlice.reducer;

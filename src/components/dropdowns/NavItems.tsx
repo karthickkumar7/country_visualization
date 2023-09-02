@@ -1,28 +1,24 @@
-import { NavItem } from '@/types/types';
+import {
+    CountryNavItem,
+    MainCategoriesString,
+    StateNavItem,
+} from '@/types/types';
 import Item from './Item';
 
-const navItems: NavItem[] = [
-    {
-        title: 'sort',
-        subMenu: [
-            { title: 'Name' },
-            { title: 'Population' },
-            { title: 'Area' },
-            { title: 'Gdp (nom)' },
-            { title: 'Gdp (ppp)' },
-        ],
-    },
-    {
-        title: 'view',
-        subMenu: [{ title: 'table' }, { title: 'grid' }],
-    },
-];
+type Props = {
+    mainCategory: MainCategoriesString;
+    navItems: StateNavItem[] | CountryNavItem[];
+};
 
-const NavItems = () => {
+const NavItems = ({ mainCategory, navItems }: Props) => {
     return (
         <ul className="flex items-center space-x-2 md:space-x-4 text-base md:text-lg font-semibold">
             {navItems.map((item) => (
-                <Item key={item.title} item={item} />
+                <Item
+                    key={item.title}
+                    item={item}
+                    mainCategory={mainCategory}
+                />
             ))}
         </ul>
     );
