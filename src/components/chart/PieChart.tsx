@@ -2,8 +2,16 @@
 
 import { RootState } from '@/redux/store';
 import { MainCategoriesString } from '@/types/types';
+import { genRandomColor } from '@/utils/countries';
 import { useSelector } from 'react-redux';
-import { Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+    Cell,
+    Legend,
+    Pie,
+    PieChart,
+    ResponsiveContainer,
+    Tooltip,
+} from 'recharts';
 
 type Props = {
     mainCategory: MainCategoriesString;
@@ -46,7 +54,7 @@ const PieChartComp = ({ mainCategory }: Props) => {
     return (
         <div className="w-full">
             <ResponsiveContainer width="90%" height="300px" aspect={1.2}>
-                <PieChart className="">
+                <PieChart className="flex items-center justify-center">
                     <Pie
                         data={setData()}
                         dataKey={getDataKey()}
@@ -58,7 +66,11 @@ const PieChartComp = ({ mainCategory }: Props) => {
                         outerRadius={120}
                         animationDuration={300}
                         fill={chartColor}
-                    />
+                    >
+                        {setData()?.map((entry, index) => (
+                            <Cell key={entry.name} fill={genRandomColor()} />
+                        ))}
+                    </Pie>
                     <Tooltip />
                     <Legend />
                 </PieChart>

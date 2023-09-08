@@ -13,6 +13,7 @@ const CountryVisualizer = () => {
     const { isMobileDrawerOpen } = useSelector(
         (s: RootState) => s.functionSlice
     );
+    const { currentChart } = useSelector((s: RootState) => s.visualSlice);
     return (
         <div className="md:max-w-[1200px] py-20 mx-auto md:flex">
             <section className="w-[250px] space-y-4 px-2 hidden md:block">
@@ -24,7 +25,8 @@ const CountryVisualizer = () => {
             <section className="w-full md:w-[950px] space-y-5 p-2">
                 <SelectedCountries />
                 <SelectFieldsCountries />
-                <ChartColor />
+                {currentChart === 'tree' && <ChartColor />}
+
                 <Chart mainCategory="country" />
             </section>
         </div>

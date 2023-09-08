@@ -18,7 +18,7 @@ const data: DataCategory[] = [
 
 export default function Home() {
     return (
-        <div className="w-full h-screen flex items-center justify-center bg-slate-200">
+        <div className="w-full h-screen flex items-center justify-center bg-bgGray">
             <div className="max-w-[1200px] h-full mx-auto bg-white">
                 <div className="md:w-[1200px] h-[100px]"></div>
                 <ul className="w-full p-4 space-y-4">

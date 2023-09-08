@@ -1,11 +1,13 @@
 'use client';
 import { RootState } from '@/redux/store';
 import { MainCategoriesString } from '@/types/types';
+import { genRandomColor } from '@/utils/countries';
 import { useSelector } from 'react-redux';
 import {
     Bar,
     BarChart,
     CartesianGrid,
+    Cell,
     Legend,
     Tooltip,
     XAxis,
@@ -65,7 +67,11 @@ const BarchartV = ({ mainCategory }: Props) => {
                 <YAxis dataKey="name" type="category" />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey={getDataKey()} fill={chartColor} />
+                <Bar dataKey={getDataKey()} fill={chartColor}>
+                    {setData()?.map((entry, index) => (
+                        <Cell key={entry.name} fill={genRandomColor()} />
+                    ))}
+                </Bar>
             </BarChart>
         </div>
     );

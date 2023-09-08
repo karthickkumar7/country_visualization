@@ -8,7 +8,9 @@ import { Country } from '@/types/types';
 const SearchCountries = () => {
     const [search, setSearch] = useState('');
     const [searchedCountries, setSearchedCountries] = useState<Country[]>([]);
-    const { countries } = useSelector((s: RootState) => s.countrySlice);
+    const { countries, selectedCountries } = useSelector(
+        (s: RootState) => s.countrySlice
+    );
 
     useEffect(() => {
         if (search.length) {

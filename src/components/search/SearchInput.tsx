@@ -52,7 +52,7 @@ const SearchInput = ({
 
     return (
         <div className="w-full relative">
-            <div className="w-full px-1 flex items-center bg-blue-100">
+            <div className="w-full px-1 flex items-center rounded-l-full rounded-r-full overflow-hidden bg-blue-100">
                 <input
                     type="text"
                     placeholder={placeholder}

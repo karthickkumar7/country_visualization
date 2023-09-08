@@ -1,10 +1,13 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Exo_2 } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import ReduxProvider from '@/providers/ReduxProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const exo2 = Exo_2({
+    subsets: ['latin'],
+    weight: ['100', '200', '400', '600', '800'],
+});
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -18,7 +21,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={exo2.className}>
                 <ReduxProvider>
                     <Navbar />
                     {children}

@@ -136,3 +136,8 @@ export const inSelected = (
     }
     return false;
 };
+
+export const genRandomColor = () =>
+    `rgb(${Math.floor(Math.random() * 251)},${Math.floor(
+        Math.random() * 251
+    )},${Math.floor(Math.random() * 251)})`;

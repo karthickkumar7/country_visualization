@@ -33,7 +33,7 @@ const Selected = ({ data, route, type, noDataMsg }: Props) => {
     };
 
     return (
-        <section className="w-full min-h-[60px] p-2 flex flex-wrap items-center rounded bg-blue-200">
+        <section className="w-full min-h-[60px] p-2 flex flex-wrap items-center rounded">
             {data ? (
                 <>
                     {data.map((c) => (

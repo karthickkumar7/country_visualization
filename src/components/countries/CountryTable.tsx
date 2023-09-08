@@ -30,7 +30,7 @@ const CountryTable = () => {
     return (
         <Table className="">
             <TableHeader className="">
-                <TableRow className="bg-blue-600 hover:bg-blue-600">
+                <TableRow className="bg-black hover:bg-black">
                     <TableHead className={`${tableHeaderStyle}`}>no</TableHead>
                     <TableHead className={`${tableHeaderStyle}`}>
                         name
