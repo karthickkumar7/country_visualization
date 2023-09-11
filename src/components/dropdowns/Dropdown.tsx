@@ -81,7 +81,7 @@ const Dropdown = ({ item, showDropdown, mainCategory }: Props) => {
                 {item.title}
             </p>
             {showDropdown && (
-                <ul className="p-2 bg-blue-100 rounded shadow-lg absolute top-[25px] -left-[20px]">
+                <ul className="p-2 bg-white divide-y rounded shadow-lg absolute top-[25px] -left-[20px]">
                     {item.subMenu?.map((sub) => (
                         <li
                             key={sub.title}
