@@ -28,7 +28,7 @@ const IndiaTable = () => {
     return (
         <Table className="mt-[13px]">
             <TableHeader className="">
-                <TableRow className="lg:w-[1200px] bg-black hover:bg-black">
+                <TableRow className="lg:w-[1200px] bg-blue-600 hover:bg-blue-600">
                     <TableHead className={`${tableHeaderStyle}`}>no</TableHead>
                     <TableHead className={`${tableHeaderStyle}`}>
                         name

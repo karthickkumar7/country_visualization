@@ -14,11 +14,11 @@ const Navbar = () => {
 
     return (
         <nav className="w-full fixed top-0 z-20">
-            <div className="md:max-w-[1200px] mx-auto px-1 md:px-2 bg-black text-white">
+            <div className="md:max-w-[1200px] mx-auto px-1 md:px-2 bg-blue-600 text-white">
                 <div className="w-full h-[60px]">
                     <ul className="w-full h-full flex items-center justify-between">
                         <li>
-                            <div className="text-2xl font-bold uppercase">
+                            <div className="text-2xl md:ml-4 font-bold uppercase">
                                 <Link href={'/'}>Charts</Link>
                             </div>
                         </li>
@@ -36,7 +36,7 @@ const Navbar = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <p>expand</p>
+                                        <p>show chart</p>
                                         <GoChevronDown className="text-xl" />
                                     </>
                                 )}

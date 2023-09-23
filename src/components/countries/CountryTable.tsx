@@ -30,7 +30,7 @@ const CountryTable = () => {
     return (
         <Table className="">
             <TableHeader className="">
-                <TableRow className="bg-black hover:bg-black">
+                <TableRow className="bg-blue-600 hover:bg-blue-600">
                     <TableHead className={`${tableHeaderStyle}`}>no</TableHead>
                     <TableHead className={`${tableHeaderStyle}`}>
                         name
@@ -56,7 +56,7 @@ const CountryTable = () => {
                         key={country.name}
                         className={`cursor-pointer ${
                             inSelected(country, selectedCountries)
-                                ? 'bg-blue-100 hover:bg-blue-100'
+                                ? 'bg-blue-100 hover:bg-blue-100 text-blue-600 font-bold'
                                 : 'hover:bg-slate-100'
                         }`}
                         onClick={() => selectCountry(country)}

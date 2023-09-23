@@ -16,15 +16,17 @@ const CountryVisualizer = () => {
     const { currentChart } = useSelector((s: RootState) => s.visualSlice);
     return (
         <div className="md:max-w-[1200px] py-20 mx-auto md:flex">
-            <section className="w-[250px] space-y-4 px-2 hidden md:block">
+            <section className="w-[250px] space-y-4 px-2 my-0 py-0 hidden md:block">
                 <ChartTypeListSideBar />
                 <SearchCountries />
             </section>
             {isMobileDrawerOpen && <ChartTypeMobile />}
 
-            <section className="w-full md:w-[950px] space-y-5 p-2">
-                <SelectedCountries />
-                <SelectFieldsCountries />
+            <section className="w-full md:w-[950px] md:px-4 space-y-5">
+                <div className="bg-gradient-to-b bg-blue-100 rounded">
+                    <SelectedCountries />
+                    <SelectFieldsCountries />
+                </div>
                 {currentChart === 'tree' && <ChartColor />}
 
                 <Chart mainCategory="country" />

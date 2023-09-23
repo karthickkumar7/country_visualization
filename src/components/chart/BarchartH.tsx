@@ -55,7 +55,7 @@ const BarchartH = ({ mainCategory }: Props) => {
     };
 
     return (
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto mt-4">
             <ResponsiveContainer width="95%" height={250}>
                 <BarChart data={setData()} layout="horizontal" className="ml-2">
                     <CartesianGrid strokeDasharray="3 3" />

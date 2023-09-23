@@ -28,20 +28,20 @@ const DataCategoryCard = ({ data }: Props) => {
     const routeHandler = () => router.push(data.url);
 
     return (
-        <li className="flex flex-col md:flex-row">
-            <section className="w-full md:w-[40%] p-2">
+        <li className="flex flex-col md:flex-row rounded-lg shadow-lg">
+            <section className="w-full md:w-[40%]">
                 <div className="overflow-hidden">
                     <Image
                         src={data.image}
                         width={500}
                         height={400}
                         alt="countries"
-                        className="hover:brightness-75 duration-500 cursor-pointer hover:scale-110 md:object-cover bg-red-300"
+                        className="hover:brightness-75 duration-500 cursor-pointer hover:scale-110 md:object-cover rounded-lg"
                         onClick={routeHandler}
                     />
                 </div>
             </section>
-            <section className="w-full md:w-[60%] p-2">
+            <section className="w-full md:w-[60%] p-4">
                 <h4
                     className="inline-flex text-2xl capitalize font-semibold hover:text-blue-400 cursor-pointer duration-300"
                     onClick={routeHandler}
@@ -62,26 +62,3 @@ const DataCategoryCard = ({ data }: Props) => {
 };
 
 export default DataCategoryCard;
-
-// const version1 = () => (
-//     <li
-//         className="group w-full h-[200px] md:h-[400px] flex relative bg-black hover:shadow-md rounded overflow-hidden"
-//         onClick={() => router.push(data.url)}
-//     >
-//         <Image
-//             src={data.image}
-//             width={600}
-//             height={500}
-//             alt="countries"
-//             className="w-full object-cover opacity-40 cursor-pointer hover:opacity-60 hover:scale-125 duration-300"
-//         />
-//         <div className="absolute p-4 duration-200 space-y-2 text-white">
-//             <h4 className="text-2xl group-hover:text-4xl font-semibold duration-300">
-//                 {data.title}
-//             </h4>
-//             <p className="text-xl group-hover:text-2xl duration-200">
-//                 {getLength()} data available
-//             </p>
-//         </div>
-//     </li>
-// );

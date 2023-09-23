@@ -27,8 +27,8 @@ const BarChart = ({ mainCategory }: Props) => {
         ssr: false,
     });
     return (
-        <div className="w-full p-2 border rounded">
-            <div className="flex items-center justify-center my-4">
+        <div className="w-full p-2 border rounded space-y-4 bg-slate-100">
+            <div className="flex items-center justify-center my-6">
                 {layouts.map((l) => (
                     <div
                         key={l.sub}

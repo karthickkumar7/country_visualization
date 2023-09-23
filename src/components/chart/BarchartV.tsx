@@ -54,7 +54,7 @@ const BarchartV = ({ mainCategory }: Props) => {
     };
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-4">
             <BarChart
                 width={730}
                 height={250}
