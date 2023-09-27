@@ -7,16 +7,11 @@ const navItems: CountryNavItem[] = [
     {
         title: 'sort',
         subMenu: [
-            { title: 'Name' },
             { title: 'Population' },
             { title: 'Area' },
             { title: 'Gdp (nom)' },
             { title: 'Gdp (ppp)' },
         ],
-    },
-    {
-        title: 'view',
-        subMenu: [{ title: 'table' }, { title: 'grid' }],
     },
 ];
 

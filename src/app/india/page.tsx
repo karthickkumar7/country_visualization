@@ -7,16 +7,11 @@ const navItems: StateNavItem[] = [
     {
         title: 'sort',
         subMenu: [
-            { title: 'Name' },
             { title: 'Population' },
             { title: 'Area' },
             { title: 'Gdp' },
             { title: 'Gdp per capita' },
         ],
-    },
-    {
-        title: 'view',
-        subMenu: [{ title: 'table' }, { title: 'grid' }],
     },
 ];
 

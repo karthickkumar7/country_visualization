@@ -21,14 +21,14 @@ const chartTypes: ChartListTypes[] = [
 const ChartTypeListSideBar = () => {
     return (
         <div>
-            <ul className="p-2 mb-6 space-y-4 text-lg font-semibold shadow-lg rounded-lg bg-sky-400 text-slate-100">
+            <ul className="p-2 mb-6 space-y-4 text-lg font-semibold shadow-lg rounded-lg">
                 <h4 className="text-xl px-4 uppercase font-bold cursor-default">
                     Chart Types
                 </h4>
                 {chartTypes.map((chart) => (
                     <li
                         key={chart.title}
-                        className="px-4 py-2 cursor-pointer rounded tracking-wide duration-300 hover:bg-sky-400 active:bg-blue-100"
+                        className="px-4 py-2 cursor-pointer rounded tracking-wide duration-300 hover:bg-sky-200 active:bg-blue-100"
                         onClick={() =>
                             store.dispatch(setCurrentChartType(chart.sub))
                         }

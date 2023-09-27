@@ -17,7 +17,7 @@ const Item = ({ item, mainCategory }: Props) => {
 
     return (
         <li
-            className="relative"
+            className="relative px-4 py-2 shadow hover:bg-slate-100 active:bg-slate-200"
             key={item.title}
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
@@ -30,9 +30,7 @@ const Item = ({ item, mainCategory }: Props) => {
                     mainCategory={mainCategory}
                 />
             ) : (
-                <p className="px-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200">
-                    {item.title}
-                </p>
+                <p className="cursor-pointer">{item.title}</p>
             )}
         </li>
     );

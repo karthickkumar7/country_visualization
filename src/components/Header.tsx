@@ -13,7 +13,7 @@ type Props = {
 
 const Header = ({ mainCategory, navItems }: Props) => {
     return (
-        <header className="w-full px-2 md:px-0 py-6 flex items-center justify-between">
+        <header className="w-full px-4 md:px-0 py-6 flex items-center justify-between">
             <HeaderChoice />
             <NavItems mainCategory={mainCategory} navItems={navItems} />
         </header>

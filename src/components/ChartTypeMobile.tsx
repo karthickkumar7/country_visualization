@@ -41,7 +41,7 @@ const ChartTypeMobile = () => {
     };
 
     return (
-        <section className="w-[250px] mx-auto my-4 px-2 py-4 block rounded-lg shadow-lg md:hidden bg-sky-400">
+        <section className="w-[250px] mx-auto my-4 px-2 py-4 block rounded-lg shadow-lg md:hidden">
             <ul>
                 {chartTypes.map((chart) => (
                     <li
@@ -49,7 +49,7 @@ const ChartTypeMobile = () => {
                         className={`px-2 py-1 mb-2 font-semibold cursor-pointer rounded ${
                             currentChart === chart.sub
                                 ? 'bg-white text-black'
-                                : 'hover:bg-blue-50 text-white'
+                                : 'hover:bg-blue-50'
                         }`}
                         onClick={() =>
                             store.dispatch(setCurrentChartType(chart.sub))

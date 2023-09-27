@@ -51,11 +51,7 @@ const DataCategoryCard = ({ data }: Props) => {
                 <p className="group-hover:text-2xl duration-200 text-slate-500">
                     {getLength()} data available
                 </p>
-                <p className="mt-4 text-sm md:text-base">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Tenetur consequuntur dolorem dolores quisquam debitis
-                    eveniet dicta ipsum distinctio repellat ea.
-                </p>
+                <p className="mt-4 text-sm md:text-base">{data.desc}</p>
             </section>
         </li>
     );
