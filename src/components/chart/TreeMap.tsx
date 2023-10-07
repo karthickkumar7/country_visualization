@@ -44,8 +44,8 @@ const TreeMap = ({ mainCategory }: Props) => {
     };
 
     return (
-        <div className="p-2 w-full h-[400px]">
-            <ResponsiveContainer width="95%">
+        <div className="p-1 lg:p-2 w-full h-[400px]">
+            <ResponsiveContainer width="95%" height={300}>
                 <Treemap
                     // width={900}
                     // height={400}

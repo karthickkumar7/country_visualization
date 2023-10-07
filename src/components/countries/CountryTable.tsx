@@ -7,7 +7,6 @@ import { Country } from '@/types/types';
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
@@ -30,7 +29,7 @@ const CountryTable = () => {
     return (
         <Table className="">
             <TableHeader className="">
-                <TableRow className="bg-blue-600 hover:bg-blue-600">
+                <TableRow className="bg-slate-500 hover:bg-blue-600 border border-slate-600">
                     <TableHead className={`${tableHeaderStyle}`}>no</TableHead>
                     <TableHead className={`${tableHeaderStyle}`}>
                         name
@@ -54,10 +53,10 @@ const CountryTable = () => {
                 {countries.map((country, i) => (
                     <TableRow
                         key={country.name}
-                        className={`cursor-pointer ${
+                        className={`cursor-pointer border-none ${
                             inSelected(country, selectedCountries)
-                                ? 'bg-blue-100 hover:bg-blue-100 text-blue-600 font-bold'
-                                : 'hover:bg-slate-100'
+                                ? 'bg-slate-600 text-slate-200 font-bold'
+                                : 'hover:bg-slate-600'
                         }`}
                         onClick={() => selectCountry(country)}
                     >

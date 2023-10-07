@@ -52,17 +52,17 @@ const SearchInput = ({
 
     return (
         <div className="w-full relative">
-            <div className="w-full px-1 flex items-center rounded-l-full rounded-r-full overflow-hidden bg-blue-100">
+            <div className="w-full px-2 py-1 flex items-center overflow-hidden bg-slate-700">
                 <input
                     type="text"
                     placeholder={placeholder}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="outline-none px-2 py-1 w-[90%] border rounded bg-blue-100 placeholder:text-blue-700"
+                    className="outline-none px-2 py-1 w-[90%] rounded bg-slate-700 text-slate-200 placeholder:text-slate-200"
                 />
                 {search.length ? (
                     <RxCross2
-                        className="w-[10%] text-lg cursor-pointer text-black hover:opacity-60 active:opacity-100"
+                        className="w-[10%] text-lg cursor-pointer text-slate-200 hover:opacity-60 active:opacity-100"
                         onClick={closeSearchDropdownHandler}
                     />
                 ) : null}

@@ -41,17 +41,19 @@ const DataCategoryCard = ({ data }: Props) => {
                     />
                 </div>
             </section>
-            <section className="w-full md:w-[60%] p-4">
+            <section className="w-full md:w-[60%] p-4 bg-slate-700">
                 <h4
-                    className="inline-flex text-2xl capitalize font-semibold hover:text-blue-400 cursor-pointer duration-300"
+                    className="inline-flex text-2xl capitalize font-semibold text-slate-200 hover:text-blue-400 cursor-pointer duration-300"
                     onClick={routeHandler}
                 >
                     {data.title}
                 </h4>
-                <p className="group-hover:text-2xl duration-200 text-slate-500">
+                <p className="group-hover:text-2xl duration-200 text-slate-300">
                     {getLength()} data available
                 </p>
-                <p className="mt-4 text-sm md:text-base">{data.desc}</p>
+                <p className="mt-4 text-sm text-slate-200 md:text-base">
+                    {data.desc}
+                </p>
             </section>
         </li>
     );

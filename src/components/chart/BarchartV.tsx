@@ -12,6 +12,7 @@ import {
     Tooltip,
     XAxis,
     YAxis,
+    ResponsiveContainer,
 } from 'recharts';
 
 type Props = {
@@ -55,24 +56,29 @@ const BarchartV = ({ mainCategory }: Props) => {
 
     return (
         <div className="overflow-x-auto mt-4">
-            <BarChart
-                width={730}
-                height={250}
-                data={setData()}
-                layout="vertical"
-                className="ml-2"
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" />
-                <YAxis dataKey="name" type="category" />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey={getDataKey()} fill={chartColor}>
-                    {setData()?.map((entry, index) => (
-                        <Cell key={entry.name} fill={genRandomColor()} />
-                    ))}
-                </Bar>
-            </BarChart>
+            <ResponsiveContainer width="95%" height={250}>
+                <BarChart
+                    width={730}
+                    height={250}
+                    data={setData()}
+                    layout="vertical"
+                    className="ml-2"
+                >
+                    <XAxis type="number" tick={{ fill: '#fff' }} />
+                    <YAxis
+                        dataKey="name"
+                        type="category"
+                        tick={{ fill: '#fff' }}
+                    />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey={getDataKey()} fill={chartColor}>
+                        {setData()?.map((entry, index) => (
+                            <Cell key={entry.name} fill="#65e137" />
+                        ))}
+                    </Bar>
+                </BarChart>
+            </ResponsiveContainer>
         </div>
     );
 };

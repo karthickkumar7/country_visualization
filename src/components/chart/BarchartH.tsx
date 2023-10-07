@@ -1,12 +1,11 @@
 'use client';
 import { RootState } from '@/redux/store';
 import { MainCategoriesString } from '@/types/types';
-import { genRandomColor } from '@/utils/countries';
+// import { genRandomColor } from '@/utils/countries';
 import { useSelector } from 'react-redux';
 import {
     Bar,
     BarChart,
-    CartesianGrid,
     Cell,
     Legend,
     ResponsiveContainer,
@@ -57,15 +56,18 @@ const BarchartH = ({ mainCategory }: Props) => {
     return (
         <div className="w-full overflow-x-auto mt-4">
             <ResponsiveContainer width="95%" height={250}>
-                <BarChart data={setData()} layout="horizontal" className="ml-2">
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <YAxis type="number" />
-                    <XAxis dataKey="name" type="category" />
-                    <Tooltip />
+                <BarChart data={setData()} layout="horizontal" maxBarSize={100}>
+                    <YAxis type="number" tick={{ fill: '#fff' }} />
+                    <XAxis
+                        dataKey="name"
+                        type="category"
+                        tick={{ fill: '#fff' }}
+                    />
+                    <Tooltip cursor={{ fill: 'none', opacity: '60%' }} />
                     <Legend />
                     <Bar dataKey={getDataKey()}>
                         {setData()?.map((entry, index) => (
-                            <Cell key={entry.name} fill={genRandomColor()} />
+                            <Cell key={entry.name} fill="#65e137" />
                         ))}
                     </Bar>
                 </BarChart>

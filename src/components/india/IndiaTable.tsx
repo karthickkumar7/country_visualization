@@ -26,7 +26,7 @@ const IndiaTable = () => {
         'font-semibold uppercase cursor-default text-white';
 
     return (
-        <Table className="mt-[13px]">
+        <Table className="mt-[13px] bg-slate-800">
             <TableHeader className="">
                 <TableRow className="lg:w-[1200px] bg-blue-600 hover:bg-blue-600">
                     <TableHead className={`${tableHeaderStyle}`}>no</TableHead>
@@ -55,10 +55,10 @@ const IndiaTable = () => {
                 {india.map((state, i) => (
                     <TableRow
                         key={state.name}
-                        className={`cursor-pointer ${
+                        className={`cursor-pointer text-slate-200 border-none ${
                             inSelected(state, selectedStates)
-                                ? 'bg-blue-100 font-semibold hover:bg-blue-100'
-                                : 'hover:bg-slate-100'
+                                ? 'bg-slate-700 font-semibold'
+                                : 'hover:bg-slate-700'
                         }`}
                         onClick={() => selectState(state)}
                     >

@@ -19,7 +19,9 @@ const ViewData = () => {
     };
 
     return (
-        <section className="w-full p-1 my-4 space-y-4">{renderView()}</section>
+        <section className="w-full my-4 space-y-4 bg-slate-800 text-slate-200">
+            {renderView()}
+        </section>
     );
 };
 

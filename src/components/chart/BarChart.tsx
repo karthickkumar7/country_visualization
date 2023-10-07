@@ -27,7 +27,7 @@ const BarChart = ({ mainCategory }: Props) => {
         ssr: false,
     });
     return (
-        <div className="w-full p-2 border rounded space-y-4 bg-slate-100">
+        <div className="w-full p-2 rounded space-y-4">
             <div className="flex items-center justify-center my-6">
                 {layouts.map((l) => (
                     <div
@@ -35,7 +35,7 @@ const BarChart = ({ mainCategory }: Props) => {
                         className={`px-4 py-2 rounded mr-5 cursor-pointer active:bg-blue-200 active:shadow ${
                             l.sub === layout
                                 ? 'bg-blue-600 text-white shadow'
-                                : 'bg-slate-100 hover:bg-blue-100'
+                                : 'bg-slate-700 text-slate-500 hover:bg-blue-100'
                         }`}
                         onClick={() => setLayout(l.sub)}
                     >

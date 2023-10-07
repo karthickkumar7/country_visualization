@@ -33,10 +33,10 @@ const SelectFieldsCountries = () => {
             {selectFields.map((s) => (
                 <div
                     key={s.title}
-                    className={`p-2 md:px-4 md:py-2 mr-5 cursor-pointer rounded-full active:bg-blue-200 active:shadow duration-300 ${
+                    className={`p-2 md:px-4 md:py-2 mr-5 cursor-pointer rounded active:bg-blue-500 active:shadow duration-300 ${
                         currentCountryField === s.sub
-                            ? 'bg-blue-400 text-white font-semibold tracking-wide shadow-lg'
-                            : 'hover:bg-sky-50 text-slate-700'
+                            ? 'ring ring-blue-200 text-white font-semibold tracking-wide shadow-lg'
+                            : 'hover:bg-slate-600 text-slate-400'
                     }`}
                     onClick={() =>
                         store.dispatch(setCurrentCountryField(s.sub))

@@ -41,14 +41,14 @@ const ChartTypeMobile = () => {
     };
 
     return (
-        <section className="w-[250px] mx-auto my-4 px-2 py-4 block rounded-lg shadow-lg md:hidden">
+        <section className="w-full mx-auto p-2 block rounded-lg md:hidden bg-slate-900 text-slate-200">
             <ul>
                 {chartTypes.map((chart) => (
                     <li
                         key={chart.title}
                         className={`px-2 py-1 mb-2 font-semibold cursor-pointer rounded ${
                             currentChart === chart.sub
-                                ? 'bg-white text-black'
+                                ? 'bg-slate-200 text-black pl-8'
                                 : 'hover:bg-blue-50'
                         }`}
                         onClick={() =>
@@ -58,7 +58,7 @@ const ChartTypeMobile = () => {
                         {chart.title}
                     </li>
                 ))}
-                <li className="mt-2">{renderSearchInput()}</li>
+                <li className="mt-6">{renderSearchInput()}</li>
             </ul>
         </section>
     );

@@ -27,7 +27,7 @@ const SelectFieldsStates = () => {
     const { currentStateField } = useSelector((s: RootState) => s.visualSlice);
 
     return (
-        <div className="w-full p-2 flex justify-center mt-4 text-xs md:text-base border rounded">
+        <div className="w-full p-2 flex justify-center mt-4 text-xs md:text-base rounded bg-slate-800">
             {selectFields.map((s) => (
                 <div
                     key={s.title}

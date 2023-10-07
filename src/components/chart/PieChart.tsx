@@ -53,7 +53,7 @@ const PieChartComp = ({ mainCategory }: Props) => {
     };
     return (
         <div className="w-full">
-            <ResponsiveContainer width="90%" height="300px" aspect={1.2}>
+            <ResponsiveContainer width="100%" height={250} aspect={1.1}>
                 <PieChart className="flex items-center justify-center">
                     <Pie
                         data={setData()}

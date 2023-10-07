@@ -26,7 +26,7 @@ const SelectedCountry = ({ name, fullname, mainCategory }: Props) => {
     };
 
     return (
-        <div className="px-2 py-1 m-1 flex items-center space-x-2 rounded shadow bg-blue-500 text-white">
+        <div className="px-2 py-1 m-1 flex items-center space-x-2 rounded shadow ring ring-blue-400 text-blue-300">
             <p className="capitalize">{fullname ? fullname : name}</p>
             <RxCross2
                 className="cursor-pointer hover:opacity-80 active:opacity-100"

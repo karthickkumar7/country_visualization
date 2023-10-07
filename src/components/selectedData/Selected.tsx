@@ -19,7 +19,6 @@ const Selected = ({ data, route, type, noDataMsg }: Props) => {
     const router = useRouter();
     const pathname = usePathname();
 
-    //  CHANGE
     const removeAllHandler = () => {
         switch (type) {
             case 'country':
@@ -33,7 +32,7 @@ const Selected = ({ data, route, type, noDataMsg }: Props) => {
     };
 
     return (
-        <section className="w-full min-h-[60px] p-2 flex flex-wrap items-center rounded">
+        <section className="w-full min-h-[60px] p-2 flex flex-wrap items-center rounded bg-slate-800">
             {data ? (
                 <>
                     {data.map((c) => (
@@ -46,7 +45,7 @@ const Selected = ({ data, route, type, noDataMsg }: Props) => {
                     ))}
                 </>
             ) : (
-                <h4 className="px-4 uppercase text-lg font-semibold text-blue-700">
+                <h4 className="px-4 uppercase text-lg font-semibold text-slate-200">
                     {noDataMsg}
                 </h4>
             )}
@@ -54,14 +53,14 @@ const Selected = ({ data, route, type, noDataMsg }: Props) => {
             {data && data.length >= 2 && pathname !== '/country/visualize' && (
                 <>
                     <div
-                        className="px-2 py-1 m-1 flex items-center space-x-2 rounded shadow cursor-pointer hover:opacity-80 active:opacity-100 bg-emerald-500 text-white"
+                        className="px-2 py-1 m-1 flex items-center space-x-2 rounded shadow cursor-pointer hover:opacity-80 active:opacity-100 ring ring-emerald-400 text-emerald-400"
                         onClick={() => router.push(route)}
                     >
                         <p className="capitalize">visualize</p>
                         <AiOutlineAreaChart className="" />
                     </div>
                     <div
-                        className="px-2 py-1 m-1 flex items-center space-x-2 rounded shadow cursor-pointer hover:opacity-80 active:opacity-100 bg-red-700 text-white"
+                        className="px-2 py-1 m-1 ml-2 flex items-center space-x-2 rounded shadow cursor-pointer hover:opacity-80 active:opacity-100 ring ring-red-700 text-red-500"
                         onClick={removeAllHandler}
                     >
                         <p className="capitalize">clear all</p>
