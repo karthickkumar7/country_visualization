@@ -1,5 +1,4 @@
 import Header from '@/components/Header';
-import ViewData from '@/components/ViewData';
 import CountryTable from '@/components/countries/CountryTable';
 import SelectedCountries from '@/components/selectedData/SelectedCountries';
 import { CountryNavItem } from '@/types/types';
