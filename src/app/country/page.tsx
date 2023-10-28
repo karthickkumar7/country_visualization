@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import ViewData from '@/components/ViewData';
+import CountryTable from '@/components/countries/CountryTable';
 import SelectedCountries from '@/components/selectedData/SelectedCountries';
 import { CountryNavItem } from '@/types/types';
 
@@ -21,7 +22,7 @@ const page = () => {
             <div className="max-w-[1200px] h-full md:p-2 mx-auto">
                 <Header mainCategory="country" navItems={navItems} />
                 <SelectedCountries />
-                <ViewData />
+                <CountryTable />
             </div>
         </div>
     );

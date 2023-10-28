@@ -53,10 +53,10 @@ const CountryTable = () => {
                 {countries.map((country, i) => (
                     <TableRow
                         key={country.name}
-                        className={`cursor-pointer border-none ${
+                        className={`cursor-pointer text-slate-200 border-none ${
                             inSelected(country, selectedCountries)
-                                ? 'bg-slate-600 text-slate-200 font-bold'
-                                : 'hover:bg-slate-600'
+                                ? 'bg-slate-700 font-semibold'
+                                : 'hover:bg-slate-700'
                         }`}
                         onClick={() => selectCountry(country)}
                     >

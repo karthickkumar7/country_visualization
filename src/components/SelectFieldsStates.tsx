@@ -27,14 +27,14 @@ const SelectFieldsStates = () => {
     const { currentStateField } = useSelector((s: RootState) => s.visualSlice);
 
     return (
-        <div className="w-full p-2 flex justify-center mt-4 text-xs md:text-base rounded bg-slate-800">
+        <div className="w-full px-2 py-3 md:py-4 flex justify-center mt-4 text-xs md:text-base shadow-lg rounded">
             {selectFields.map((s) => (
                 <div
                     key={s.title}
-                    className={`p-2 md:px-4 md:py-2 rounded mr-5 cursor-pointer active:bg-blue-200 active:shadow ${
+                    className={`p-2 md:px-4 md:py-2 mr-5 cursor-pointer rounded active:bg-blue-500 active:shadow duration-300 ${
                         currentStateField === s.sub
-                            ? 'bg-blue-600 text-white shadow'
-                            : 'bg-slate-100 hover:bg-blue-100'
+                            ? 'ring ring-blue-200 text-white font-semibold tracking-wide shadow-lg'
+                            : 'hover:bg-slate-600 text-slate-400'
                     }`}
                     onClick={() => store.dispatch(setCurrentStateField(s.sub))}
                 >

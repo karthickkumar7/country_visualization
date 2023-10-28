@@ -13,19 +13,23 @@ const StateVisualizer = () => {
     const { isMobileDrawerOpen } = useSelector(
         (s: RootState) => s.functionSlice
     );
+    const { currentChart } = useSelector((s: RootState) => s.visualSlice);
+
     return (
-        <div className="w-full min-h-[calc(100vh-60px)] bg-slate-900">
-            <div className="md:max-w-[1200px] py-20 mx-auto md:flex bg-slate-900">
-                <section className="w-[250px] space-y-4 px-2 hidden md:block">
+        <div className="w-full min-h-screen bg-slate-900">
+            <div className="md:max-w-[1200px] h-full mx-auto py-4 md:flex">
+                <section className="w-[250px] space-y-4 px-2 my-0 py-0 hidden md:block">
                     <ChartTypeListSideBar />
                     <SearchIndia />
                 </section>
                 {isMobileDrawerOpen && <ChartTypeMobile />}
 
                 <section className="w-full md:w-[950px] space-y-5 p-2">
-                    <SelectedStates />
-                    <SelectFieldsStates />
-                    <ChartColor />
+                    <div className="bg-slate-800 py-4 rounded">
+                        <SelectedStates />
+                        <SelectFieldsStates />
+                    </div>
+                    {currentChart === 'tree' && <ChartColor />}
                     <Chart mainCategory="india" />
                 </section>
             </div>
